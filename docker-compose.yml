@@ -1,0 +1,18 @@
+services:
+  juice-shop:
+    image: bkimminich/juice-shop:latest
+    container_name: owasp-juice-shop
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  dvwa:
+    image: vulnerables/web-dvwa:latest
+    container_name: owasp-dvwa
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: owasp-labs-net
