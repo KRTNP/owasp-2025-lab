@@ -1,0 +1,20 @@
+{
+  "phantom-ledger": [
+    "FLAG{ledger_entrypoint}",
+    "FLAG{rbac_bypass_chain}",
+    "FLAG{internal_callback_pivot}",
+    "FLAG{phantom_root}"
+  ],
+  "neon-proxy": [
+    "FLAG{proxy_foothold}",
+    "FLAG{header_smuggle}",
+    "FLAG{trust_boundary_break}",
+    "FLAG{neon_root}"
+  ],
+  "cerberus-cache": [
+    "FLAG{cache_footprint}",
+    "FLAG{key_confusion}",
+    "FLAG{poisoned_object}",
+    "FLAG{cerberus_root}"
+  ]
+}

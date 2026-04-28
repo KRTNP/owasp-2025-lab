@@ -53,3 +53,14 @@ For educational use in controlled environments.
 ## Extra Track
 
 - `ctf/` - HTB-style challenge track (hard chain labs)
+
+## Advanced CTF Extensions
+
+- `ctf/` now includes 3 hard challenges: `phantom-ledger`, `neon-proxy`, `cerberus-cache`
+- `scoreboard/` local scoring data and challenge flags
+- `hints/` staged hint release data
+- `scripts/scoreboard.py` local scoring CLI
+- `scripts/hints.py` hint release/show CLI
+- `scripts/reset-labs.sh` one-shot environment reset
+- `.github/workflows/security.yml` secret scan + dependency scan + CodeQL
+- `docs/player-guide/PLAYER-GUIDE.md` and `docs/challenge-authoring/AUTHOR-GUIDE.md`

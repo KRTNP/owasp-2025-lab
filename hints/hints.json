@@ -1,0 +1,26 @@
+{
+  "phantom-ledger": {
+    "stage1": [
+      "Inspect ID-based endpoints after login.",
+      "Try object IDs from other users."
+    ],
+    "stage2": [
+      "Find background job callback parameters.",
+      "Look for URL fetch behavior in exports."
+    ],
+    "stage3": [
+      "Internal hostnames may be reachable indirectly.",
+      "Check trust assumptions on internal headers."
+    ]
+  },
+  "neon-proxy": {
+    "stage1": ["Proxy normalization can hide parser differences."],
+    "stage2": ["Look at hop-by-hop and forwarded headers."],
+    "stage3": ["Cache keys and auth context can desync."]
+  },
+  "cerberus-cache": {
+    "stage1": ["Track response variance with same URL."],
+    "stage2": ["Probe cache key composition carefully."],
+    "stage3": ["Find poisoning path then privileged reuse."]
+  }
+}

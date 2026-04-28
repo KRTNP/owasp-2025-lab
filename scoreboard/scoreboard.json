@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "username": "player1",
+      "solves": [],
+      "score": 0
+    }
+  ],
+  "challenges": [
+    {"id": "phantom-ledger", "flags": 4, "max_points": 400},
+    {"id": "neon-proxy", "flags": 4, "max_points": 400},
+    {"id": "cerberus-cache", "flags": 4, "max_points": 400}
+  ]
+}

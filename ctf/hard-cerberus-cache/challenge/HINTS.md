@@ -1,0 +1,3 @@
+- Observe cache-hit headers and variant behavior.
+- Auth context may be dropped in key generation.
+- Test edge cases around normalized URL/query.

@@ -1,0 +1,3 @@
+- Compare edge vs backend header interpretation.
+- Probe trusted header injection paths.
+- Track cache/auth context mismatch.

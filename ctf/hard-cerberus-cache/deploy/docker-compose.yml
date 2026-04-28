@@ -1,0 +1,7 @@
+services:
+  app:
+    image: node:20-alpine
+    container_name: cerberus-app
+    command: sh -c "node -e \"require('http').createServer((_,r)=>r.end('cerberus cache placeholder')).listen(7600)\""
+    ports:
+      - "7600:7600"
