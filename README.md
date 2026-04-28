@@ -49,3 +49,7 @@ This repository is a **local-only, legal training environment** for learning web
 
 For educational use in controlled environments.
 # owasp-2025-lab
+
+## Extra Track
+
+- `ctf/` - HTB-style challenge track (hard chain labs)

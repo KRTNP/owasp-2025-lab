@@ -1,0 +1,25 @@
+services:
+  app:
+    build: ./app
+    container_name: phantom-ledger-app
+    ports:
+      - "7400:7400"
+    environment:
+      - NODE_ENV=development
+      - APP_PORT=7400
+      - INTERNAL_API_URL=http://internal-api:9000
+    depends_on:
+      - internal-api
+
+  internal-api:
+    build: ./internal-api
+    container_name: phantom-ledger-internal
+    expose:
+      - "9000"
+    environment:
+      - NODE_ENV=development
+      - API_PORT=9000
+
+networks:
+  default:
+    name: phantom-ledger-net
