@@ -15,23 +15,25 @@ const flags = {
 app.get('/health', (_req, res) => res.json({ ok: true }));
 
 app.get('/admin/hint', (req, res) => {
-  // Stage 2: attacker reaches here via spoofed X-Forwarded-For at edge proxy.
+  if (req.headers['x-auth-debug'] !== 'elevated-user') {
+    return res.status(403).json({ error: 'approval workflow missing' });
+  }
   res.json({
-    flag: flags.stage2,
-    message: 'Internal endpoint reachable. Continue pivoting trusted headers.'
+    marker: flags.stage2,
+    tip: 'Trusted host assertions are consumed by internal pivot endpoint.'
   });
 });
 
 app.get('/admin/pivot', (req, res) => {
   const role = req.headers['x-auth-role'];
   const fhost = req.headers['x-forwarded-host'];
+  const dbg = req.headers['x-auth-debug'];
 
-  // Vulnerable condition: treats forwarded host as proof of trusted origin.
-  if (role === 'admin' || fhost === 'ops.neon.local') {
+  if ((role === 'admin' || fhost === 'ops.neon.local') && dbg === 'elevated-user') {
     return res.json({
-      flag: flags.stage3,
+      marker: flags.stage3,
       ops_key: OPS_KEY,
-      next: 'Use ops key against /root-vault on edge app.'
+      next: 'Use ops key against /root-vault and satisfy admin identity checks.'
     });
   }
 
@@ -42,13 +44,11 @@ app.get('/admin/root-vault', (req, res) => {
   const role = req.headers['x-auth-role'];
   const user = req.headers['x-auth-user'];
   const key = req.headers['x-ops-key'];
+  const dbg = req.headers['x-auth-debug'];
 
-  if (role !== 'admin' && user !== 'admin') {
-    return res.status(403).json({ error: 'admin identity required' });
-  }
-  if (key !== OPS_KEY) {
-    return res.status(403).json({ error: 'bad ops key' });
-  }
+  if (role !== 'admin' && user !== 'admin') return res.status(403).json({ error: 'admin identity required' });
+  if (key !== OPS_KEY) return res.status(403).json({ error: 'bad ops key' });
+  if (dbg !== 'elevated-user') return res.status(403).json({ error: 'elevated approval missing' });
 
   return res.json({ flag: flags.final, status: 'owned' });
 });
