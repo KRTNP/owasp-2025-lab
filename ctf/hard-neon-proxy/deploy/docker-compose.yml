@@ -1,7 +1,19 @@
 services:
   app:
-    image: node:20-alpine
+    build: ./app
     container_name: neon-proxy-app
-    command: sh -c "node -e \"require('http').createServer((_,r)=>r.end('neon proxy placeholder')).listen(7500)\""
     ports:
       - "7500:7500"
+    environment:
+      - APP_PORT=7500
+      - INTERNAL_API_URL=http://internal-api:9100
+    depends_on:
+      - internal-api
+
+  internal-api:
+    build: ./internal-api
+    container_name: neon-internal
+    expose:
+      - "9100"
+    environment:
+      - API_PORT=9100

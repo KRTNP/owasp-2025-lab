@@ -1,7 +1,7 @@
 # Hard Challenge: Cerberus Cache
 
 ## Objective
-Exploit cache key confusion and poisoning to access protected responses.
+Exploit cache key confusion + poisoned trusted objects to escalate.
 
 ## Flags
 - FLAG{cache_footprint}
@@ -14,3 +14,6 @@ Exploit cache key confusion and poisoning to access protected responses.
 cd ctf/hard-cerberus-cache/deploy
 docker compose up -d --build
 ```
+
+## Endpoint
+- Public app: `http://localhost:7600`

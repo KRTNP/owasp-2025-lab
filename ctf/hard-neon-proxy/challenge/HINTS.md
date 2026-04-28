@@ -1,3 +1,4 @@
-- Compare edge vs backend header interpretation.
-- Probe trusted header injection paths.
-- Track cache/auth context mismatch.
+- Internal-only checks often trust `X-Forwarded-For`.
+- Try proxying into `/admin/*` paths through the edge route.
+- Some internal routes trust `X-Forwarded-Host` as origin proof.
+- Final vault requires both identity context and a leaked ops key.

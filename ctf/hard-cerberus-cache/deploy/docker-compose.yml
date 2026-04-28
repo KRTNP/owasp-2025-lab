@@ -1,7 +1,19 @@
 services:
   app:
-    image: node:20-alpine
+    build: ./app
     container_name: cerberus-app
-    command: sh -c "node -e \"require('http').createServer((_,r)=>r.end('cerberus cache placeholder')).listen(7600)\""
     ports:
       - "7600:7600"
+    environment:
+      - APP_PORT=7600
+      - INTERNAL_API_URL=http://internal-api:9200
+    depends_on:
+      - internal-api
+
+  internal-api:
+    build: ./internal-api
+    container_name: cerberus-internal
+    expose:
+      - "9200"
+    environment:
+      - API_PORT=9200

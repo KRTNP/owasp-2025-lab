@@ -1,3 +1,4 @@
-- Observe cache-hit headers and variant behavior.
-- Auth context may be dropped in key generation.
-- Test edge cases around normalized URL/query.
+- Cache hit behavior may skip authorization logic.
+- Check if cache key can be influenced by client headers.
+- Bot/warmer features are common pivot points for cache poisoning.
+- Root access may trust cached auth context rather than live auth.

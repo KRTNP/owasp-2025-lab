@@ -1,7 +1,7 @@
 # Hard Challenge: Neon Proxy
 
 ## Objective
-Exploit proxy/header trust inconsistencies to reach privileged internal behavior.
+Exploit edge proxy trust bugs to pivot into internal admin routes.
 
 ## Flags
 - FLAG{proxy_foothold}
@@ -14,3 +14,6 @@ Exploit proxy/header trust inconsistencies to reach privileged internal behavior
 cd ctf/hard-neon-proxy/deploy
 docker compose up -d --build
 ```
+
+## Endpoint
+- Public app: `http://localhost:7500`
